@@ -23,6 +23,7 @@ class Nodo (Entity):
         )
         self.id = id
         self.sala = None
+        self.solucion = ''
 
     def __repr__(self):
         return f"{self.id} y {self.position}"
@@ -154,9 +155,11 @@ def update():
             Nivel Ruido: {n_ruido}
             Actividad: {actividad}
             Ruido permitido : {max}
+            Sugerencia: {sugerencia}
             ''').format(frecuencia=argumentos[0], origen=argumentos[1], ruido= argumentos[2], id=entidad.id,
                         habitabilidad=habitabilidad, sala=entidad.sala.id,n_ruido=entidad.sala.db_ruido,
-                        actividad=entidad.sala.actividad.nombre, max=entidad.sala.actividad.max_db)
+                        actividad=entidad.sala.actividad.nombre, max=entidad.sala.actividad.max_db,
+                        sugerencia=entidad.solucion)
         column.textField.render()
     else:
         column.textField.text = dedent ('''
